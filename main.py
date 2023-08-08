@@ -44,11 +44,22 @@ def winnings (board):
     else:
         return False
 
+def draw(board) :
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] == " ":
+                return False
+    return True
+
+
 
 while not gameOver:
     if swithPlayers(players, player_track):
         if winnings(gameboard):
             print(f"{players[player_track]} has won! Game Over")
+            gameOver = True
+        if draw(gameboard) :
+            print(f"It is a Draw")
             gameOver = True
         player_track = 1 if player_track == 0 else 0
         drawBoard(gameboard)
